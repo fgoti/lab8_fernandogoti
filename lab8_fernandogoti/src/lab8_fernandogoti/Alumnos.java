@@ -9,7 +9,7 @@ package lab8_fernandogoti;
  *
  * @author Fernando Goti
  */
-public class Alumnos extends Guerreros {
+public class Alumnos extends Bestia {
 
     private long cuenta;
     private String carrera;
@@ -19,8 +19,7 @@ public class Alumnos extends Guerreros {
         super();
     }
 
-    public Alumnos(long cuenta, String carrera, int edad, String nombre, String nickname, double Poder_ataque, double poder_defensa, double salud, double puntos) {
-        super(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos);
+    public Alumnos(long cuenta, String carrera, int edad) {
         this.cuenta = cuenta;
         this.carrera = carrera;
         this.edad = edad;
@@ -53,6 +52,16 @@ public class Alumnos extends Guerreros {
     @Override
     public String toString() {
         return super.getNombre() + cuenta;
+    }
+
+    @Override
+    public void Ataque(Guerreros guerrero) {
+        double vida_rival, aumento, total;
+        vida_rival = this.getPoder_ataque() - guerrero.getPoder_defensa();
+        guerrero.setSalud(vida_rival);
+        aumento = this.getSalud() * 0.25;
+        total = aumento + this.getSalud();
+        this.setSalud(total);
     }
 
 }
