@@ -9,6 +9,7 @@ package lab8_fernandogoti;
  *
  * @author Fernando Goti
  */
-public class Bestia {
+public abstract class Bestia  extends Guerreros{
     
+  public abstract void Ataque(Guerreros guerrero);  
 }

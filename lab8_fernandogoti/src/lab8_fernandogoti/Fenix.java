@@ -9,18 +9,16 @@ package lab8_fernandogoti;
  *
  * @author Fernando Goti
  */
-public class Dragon extends Bestia {
+public class Fenix extends Bestia {
 
     @Override
     public void Ataque(Guerreros guerrero) {
-        double salud_rival, poder_ataque, defensa_rival1, defensa_rival2, resta_salud;
-        poder_ataque = guerrero.getPoder_ataque() * 0.35;
+        double salud_rival, poder_ataque, ataque_rival1, ataque_rival2, resta_salud;
+        poder_ataque = guerrero.getPoder_ataque() * 0.75;
         salud_rival = (guerrero.getPoder_ataque() * poder_ataque) - guerrero.getPoder_defensa();
-        defensa_rival1 = guerrero.getPoder_defensa() * 0.15;
-        defensa_rival2 = guerrero.getPoder_defensa() - defensa_rival1;
-        guerrero.setPoder_ataque(defensa_rival2);
         resta_salud = guerrero.getSalud() - salud_rival;
-        guerrero.setSalud(resta_salud);
+        ataque_rival1 = guerrero.getPoder_ataque() * 0.05;
+        ataque_rival2 = guerrero.getPoder_ataque() - ataque_rival1;
+        guerrero.setPoder_ataque(ataque_rival2);
     }
-
 }
