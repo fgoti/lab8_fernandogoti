@@ -11,6 +11,14 @@ package lab8_fernandogoti;
  */
 public class Minotauro extends Bestia {
 
+    public Minotauro() {
+        super();
+    }
+
+    public Minotauro(String nombre, String nickname, double Poder_ataque, double poder_defensa, double salud, double puntos) {
+        super(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos);
+    }
+
     @Override
     public void Ataque(Guerreros guerrero) {
         double vida_rival1, cincuenta, poder1, poder2;

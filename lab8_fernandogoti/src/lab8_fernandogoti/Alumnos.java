@@ -19,7 +19,8 @@ public class Alumnos extends Bestia {
         super();
     }
 
-    public Alumnos(long cuenta, String carrera, int edad) {
+    public Alumnos(long cuenta, String carrera, int edad, String nombre, String nickname, double Poder_ataque, double poder_defensa, double salud, double puntos) {
+        super(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos);
         this.cuenta = cuenta;
         this.carrera = carrera;
         this.edad = edad;

@@ -11,6 +11,14 @@ package lab8_fernandogoti;
  */
 public class Fenix extends Bestia {
 
+    public Fenix() {
+        super();
+    }
+
+    public Fenix(String nombre, String nickname, double Poder_ataque, double poder_defensa, double salud, double puntos) {
+        super(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos);
+    }
+
     @Override
     public void Ataque(Guerreros guerrero) {
         double salud_rival, poder_ataque, ataque_rival1, ataque_rival2, resta_salud;

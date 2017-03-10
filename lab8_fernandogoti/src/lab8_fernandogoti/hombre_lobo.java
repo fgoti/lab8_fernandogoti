@@ -11,6 +11,14 @@ package lab8_fernandogoti;
  */
 public class hombre_lobo extends Bestia {
 
+    public hombre_lobo() {
+        super();
+    }
+
+    public hombre_lobo(String nombre, String nickname, double Poder_ataque, double poder_defensa, double salud, double puntos) {
+        super(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos);
+    }
+
     @Override
     public void Ataque(Guerreros guerrero) {
         double vida_rival, vida_rival2;
