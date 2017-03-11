@@ -57,6 +57,9 @@ public class Main extends javax.swing.JFrame {
         Spinner_edad = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -242,15 +245,43 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar", jPanel1);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "NickName", "Ataque", "Vida"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 501, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel2);
@@ -305,8 +336,8 @@ public class Main extends javax.swing.JFrame {
         if (TabPrincipal.getSelectedIndex() == 0) {
             if (Combo_bestia.getSelectedItem().toString().equals("Dragon")) {
                 guerreros.add(new Dragon(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos));
-                agregarrb = new AdministrarGuerreros("/Gurreros.Dragon");
                 for (int i = 0; i < guerreros.size(); i++) {
+                    agregarrb = new AdministrarGuerreros("./Gurreros.cbm");
                     agregarrb.cargarArchivo();
                     agregarrb.setGuerrero((Guerreros) guerreros.get(i));
                     agregarrb.escribirArchivo();
@@ -314,8 +345,8 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Se agrego exitosamente Dragon");
             } else if (Combo_bestia.getSelectedItem().toString().equals("Fenix")) {
                 guerreros.add(new Fenix(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos));
-                agregarrb = new AdministrarGuerreros("/Gurreros.Fenix");
                 for (int i = 0; i < guerreros.size(); i++) {
+                    agregarrb = new AdministrarGuerreros("./Gurreros.cbm");
                     agregarrb.cargarArchivo();
                     agregarrb.setGuerrero((Guerreros) guerreros.get(i));
                     agregarrb.escribirArchivo();
@@ -324,8 +355,8 @@ public class Main extends javax.swing.JFrame {
 
             } else if (Combo_bestia.getSelectedItem().toString().equals("Hombre Lobo")) {
                 guerreros.add(new hombre_lobo(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos));
-                agregarrb = new AdministrarGuerreros("/Gurreros.Hombre_Lobo");
                 for (int i = 0; i < guerreros.size(); i++) {
+                    agregarrb = new AdministrarGuerreros("./Gurreros.cbm");
                     agregarrb.cargarArchivo();
                     agregarrb.setGuerrero((Guerreros) guerreros.get(i));
                     agregarrb.escribirArchivo();
@@ -334,8 +365,8 @@ public class Main extends javax.swing.JFrame {
 
             } else if (Combo_bestia.getSelectedItem().toString().equals("Miniatura")) {
                 guerreros.add(new Minotauro(nombre, nickname, Poder_ataque, poder_defensa, salud, puntos));
-                agregarrb = new AdministrarGuerreros("/Gurreros.Miniatura");
                 for (int i = 0; i < guerreros.size(); i++) {
+                    agregarrb = new AdministrarGuerreros("./Gurreros.cbm");
                     agregarrb.cargarArchivo();
                     agregarrb.setGuerrero((Guerreros) guerreros.get(i));
                     agregarrb.escribirArchivo();
@@ -348,8 +379,8 @@ public class Main extends javax.swing.JFrame {
             carrera = TexCarrera.getText();
             edad = Integer.parseInt(Spinner_edad.getValue().toString());
             guerreros.add(new Alumnos(cuenta, carrera, edad, nombre, nickname, Poder_ataque, poder_defensa, salud, puntos));
-            agregarrb = new AdministrarGuerreros("/Guerreros.alumnos");
             for (int i = 0; i < guerreros.size(); i++) {
+                agregarrb = new AdministrarGuerreros("./Guerreros.cbm");
                 agregarrb.cargarArchivo();
                 agregarrb.setGuerrero((Guerreros) guerreros.get(i));
                 agregarrb.escribirArchivo();
@@ -415,6 +446,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField TexNickname;
     private javax.swing.JTextField TextNombre;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -430,7 +462,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     ArrayList guerreros = new ArrayList();
     AdministrarGuerreros agregarrb;

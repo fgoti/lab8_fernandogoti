@@ -19,53 +19,53 @@ import java.util.ArrayList;
  */
 public class AdministrarGuerreros {
 
-    ArrayList<Guerreros> ListaGuerreros = new ArrayList();
-    File Archivos = null;
+    ArrayList<Guerreros> listaguerrero = new ArrayList();
+    File archivo = null;
 
     public AdministrarGuerreros(String path) {
-        Archivos = new File(path);
+        archivo = new File(path);
     }
 
     public ArrayList<Guerreros> getListaguerro() {
-        return ListaGuerreros;
+        return listaguerrero;
     }
 
     public void setListaguerro(ArrayList<Guerreros> listaguerrero) {
-        this.ListaGuerreros = listaguerrero;
+        this.listaguerrero = listaguerrero;
     }
 
     public File getArchivo() {
-        return Archivos;
+        return archivo;
     }
 
     public void setArchivo(File archivo) {
-        this.Archivos = archivo;
+        this.archivo = archivo;
     }
 
     @Override
     public String toString() {
-        return "AdministrarGuerreros{" + "ListaGurreros=" + ListaGuerreros + '}';
+        return "AdminGuerreros{" + "listaguerrero=" + listaguerrero + '}';
     }
 
     public void setGuerrero(Guerreros g) {
-        this.ListaGuerreros.add(g);
+        this.listaguerrero.add(g);
     }
 
     public void cargarArchivo() {
         try {
-            ListaGuerreros = new ArrayList();
+            listaguerrero = new ArrayList();
             Guerreros temp;
-            if (Archivos.exists()) {
-                FileInputStream Entrada = new FileInputStream(Archivos);
-                ObjectInputStream Objeto = new ObjectInputStream(Entrada);
+            if (archivo.exists()) {
+                FileInputStream entrada = new FileInputStream(archivo);
+                ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Guerreros) Objeto.readObject()) != null) {
-                        ListaGuerreros.add(temp);
+                    while ((temp = (Guerreros) objeto.readObject()) != null) {
+                        listaguerrero.add(temp);
                     }
                 } catch (EOFException e) {
                 }
-                Objeto.close();
-                Entrada.close();
+                objeto.close();
+                entrada.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,9 +76,9 @@ public class AdministrarGuerreros {
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
         try {
-            fw = new FileOutputStream(Archivos);
+            fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            for (Guerreros t : ListaGuerreros) {
+            for (Guerreros t : listaguerrero) {
                 bw.writeObject(t);
             }
             bw.flush();
